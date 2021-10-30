@@ -230,41 +230,32 @@ function createHeatMap(data) {
             .on("mousemove", mousemove)
             .on("mouseleave", mouseleave);
 
-    //create legend
-    //var width = 150,
-    // length = myColor.range().length
-    length = 6
-    //height = 6;
-    var xLegend = d3.scaleLinear()
-        .domain([1, length - 1])
-        .rangeRound([width / length, width * (length - 1) / length]);
+    
 
-    svg_legend = d3.select("div#heatmap")
-                    .append('svg')
-                    .attr("transform", "translate(3,3)");
-
-    svg_legend.selectAll("rect")
-    .data(myColor.range())
-    .join("rect")
-    .attr("height", height)
-    //.attr("x", (d, i) => x(i))
-    .attr("width", 10)
-    .attr("fill", d => d);
-
-    // svg_legend.append("text")
-    // .attr("x", width+2)
-    // .attr("y", height+12)
-    // .attr("fill", "black")
-    // .attr("text-anchor", "start")
-    // //.attr("font-weight", "bold")
-    // .text("Number of Races")
-    // .raise();
-
-    svg_legend.call(d3.axisBottom(xLegend)
-            .tickSize(8)
-            .tickFormat("fill", function(d) { return myColor(d.count)})
-            .tickValues(function(d) { return myColor(d.count)}))
-            .select(".domain")
-            .remove();
+//     const max_emp = d3.max(dataHeatMap, (d) => d.count)
+//     const max_employees = Math.ceil(max_emp/100)*100
+//     var xscale = d3.scaleLinear()
+//                     .domain([0, max_employees])
+//                     .range([0, width]);
+    
+//     var svg_legend = d3.select("div#heatmap")
+//                         .append("svg")
+//                         .attr("width", width + 200)
+//                         .attr("height", "40px")
+//                         .attr("transform", "translate(70,-550)")
+//                         //.attr("transform", `translate(${margin.left},${margin.bottom})`)
+                        
+//     svg_legend.append("g")
+//                 .attr("transform", "translate(10,20)")
+//                 .call(d3.axisBottom(xscale))
+//                 .data(dataHeatMap, function(d) {return d.company_size+':'+d.roles;})
+//                 .join("rect")
+//                 .attr("count", function(d) {
+//                     return d.count
+//                 })
+//                 .attr("height", 10)
+//                 .attr("width",10)
+//                 .attr("fill", function(d) { return myColor(d.count)})
+//                 .attr("y", -20)
 }
 

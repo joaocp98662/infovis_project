@@ -1,0 +1,42 @@
+[
+  {
+    "role": "Business Analyst",
+    "color": "#744700"
+  },
+  {
+    "role": "Data Analyst",
+    "color": "#744700"
+  },
+  {
+    "role": "Data Engineer",
+    "color": "#744700"
+  },
+  {
+    "role": "Data Scientist",
+    "color": "#16537e"
+  },
+  {
+    "role": "DBA/Database Engineer",
+    "color": "#cc0000"
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "color": "#6a329f"
+  },
+  {
+    "role": "Product/Project Manager",
+    "color": "#f1c232"
+  },
+  {
+    "role": "Research Scientist",
+    "color": "#ce7e00"
+  },
+  {
+    "role": "Software Engineer",
+    "color": "#000000"
+  },
+  {
+    "role": "Statistician",
+    "color": "#274e13"
+  }
+]

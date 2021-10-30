@@ -100,12 +100,12 @@ function createHeatMap(data) {
 
                 // select donut chart path from the specific role selected in the heatmap that will be selected
                 var donut_path_to_select = d3.select("div#donutChart").select("svg").select("g").selectAll("path").filter(function(e) {
-                    return this.role === role;
+                    return e.data.label === role;
                 })
 
                // donut chart paths different from the specific role selected in the heatmap
                 var donut_paths = d3.select("div#donutChart").select("svg").select("g").selectAll("path").filter(function(e) {
-                    return this.role !== role;
+                    return e.role !== role;
                 });
 
                 if(d3.select(element).attr("selected")) {
@@ -229,5 +229,42 @@ function createHeatMap(data) {
             .on("mouseover", mouseover)
             .on("mousemove", mousemove)
             .on("mouseleave", mouseleave);
+
+    //create legend
+    //var width = 150,
+    // length = myColor.range().length
+    length = 6
+    //height = 6;
+    var xLegend = d3.scaleLinear()
+        .domain([1, length - 1])
+        .rangeRound([width / length, width * (length - 1) / length]);
+
+    svg_legend = d3.select("div#heatmap")
+                    .append('svg')
+                    .attr("transform", "translate(3,3)");
+
+    svg_legend.selectAll("rect")
+    .data(myColor.range())
+    .join("rect")
+    .attr("height", height)
+    //.attr("x", (d, i) => x(i))
+    .attr("width", 10)
+    .attr("fill", d => d);
+
+    // svg_legend.append("text")
+    // .attr("x", width+2)
+    // .attr("y", height+12)
+    // .attr("fill", "black")
+    // .attr("text-anchor", "start")
+    // //.attr("font-weight", "bold")
+    // .text("Number of Races")
+    // .raise();
+
+    svg_legend.call(d3.axisBottom(xLegend)
+            .tickSize(8)
+            .tickFormat("fill", function(d) { return myColor(d.count)})
+            .tickValues(function(d) { return myColor(d.count)}))
+            .select(".domain")
+            .remove();
 }
 

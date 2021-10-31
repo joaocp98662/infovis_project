@@ -16,10 +16,15 @@ function init() {
  * Global function -> call all the create idioms
  * 
  */
-function createGlobal(data) {
+function createGlobal(data, fromChart) {
 
-	createRadarChart(data);
-	createHeatMap(data);
+	if(fromChart !== 'radarChart') {
+		createRadarChart(data);
+	}
+
+	if(fromChart !== 'heatMap' && fromChart !== 'donutChart') {
+		createHeatMap(data);
+	}
 }
 
 /**
@@ -58,7 +63,7 @@ function donutChart(data) {
 	}
 
 	var callCreate = function(data) {
-		createGlobal(data);
+		createGlobal(data, "donutChart");
 	}		
 
     var width = 105;
@@ -154,8 +159,6 @@ function donutChart(data) {
     		var tooltip = d3.select("div.donutToolTip").style("visibility", "hidden");
     	})
     	.on("click", function(event, d) {
-
-    		console.log(this);
 
     		var slice = d3.select(this);
 

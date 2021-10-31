@@ -163,6 +163,7 @@ function createRadarChart(data) {
 	axis.append("text")
 		.attr("class", "legend")
 		.style("font-size", "11px")
+		.style("fill", "#5a6169")
 		.attr("text-anchor", "middle")
 		.attr("dy", "0.35em")
 		.attr("x", function(d, i){ 

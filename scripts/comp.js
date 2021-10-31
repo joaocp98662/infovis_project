@@ -16,13 +16,13 @@ function createHeatMap(data) {
 
     // create function that calls createGlobal function - triggers creates
     var callCreate = function(data) {
-        createGlobal(data);
+        createGlobal(data, "heatMap");
     }
 
     // set svg dimension
     const margin = {top: 60, right: 50, bottom:140, left: 100},
     width = 450 - margin.left - margin.right,
-    height = 570 - margin.top - margin.bottom;
+    height = 535 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
     const svg = d3.select("div#heatmap")
@@ -99,13 +99,13 @@ function createHeatMap(data) {
                 });
 
                 // select donut chart path from the specific role selected in the heatmap that will be selected
-                var donut_path_to_select = d3.select("div#donutChart").select("svg").select("g").selectAll("path").filter(function(e) {
-                    return this.role === role;
+                var donut_path_to_select = d3.select("div#donutChart").select("svg").select("g").selectAll("path").filter(function(d) {
+                    return d.data.label === role;
                 })
 
                // donut chart paths different from the specific role selected in the heatmap
-                var donut_paths = d3.select("div#donutChart").select("svg").select("g").selectAll("path").filter(function(e) {
-                    return this.role !== role;
+                var donut_paths = d3.select("div#donutChart").select("svg").select("g").selectAll("path").filter(function(d) {
+                    return d.data.label !== role;
                 });
 
                 if(d3.select(element).attr("selected")) {
@@ -141,7 +141,6 @@ function createHeatMap(data) {
 
 
                     /* ****** donut chart ***** */
-                    console.log(donut_path_to_select);
                     donut_paths.attr("selected", null) // remove selected from all the previous selected slices that weren't deselected
                     donut_paths.style('opacity', 0.3);
 
@@ -192,8 +191,6 @@ function createHeatMap(data) {
         
         var element = d3.select(this).node();
 
-        console.log(d3.select(element).attr("selected"));
-
         if(!d3.select(element).attr("selected")) {
             d3.select(this)
                 .style("stroke", "none")
@@ -229,5 +226,52 @@ function createHeatMap(data) {
             .on("mouseover", mouseover)
             .on("mousemove", mousemove)
             .on("mouseleave", mouseleave);
+
+ console.log(range(0, 800, 800 / 7));
+
+
+  var color = d3.scaleThreshold()
+                .domain(range(0, d3.max(dataHeatMap, d => d.count), d3.max(dataHeatMap, d => d.count) / 7))
+                .range(d3.schemeGreys[7]);
+
+  var width_legend = 300,
+      length_legend = color.range().length,
+      height_legend = 15;
+
+  var x_legend = d3.scaleLinear()
+      .domain([0, length_legend])
+      .rangeRound([width_legend / length_legend, width_legend * (length_legend - 1) / length_legend]);
+
+  svg_legend = d3.select("div#heatmap")
+                  .attr("align","center")                  
+                  .append('svg')
+                  .attr("height", height_legend + 20)
+                  .attr("width_legend", width_legend)
+                  .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  svg_legend.selectAll("rect")
+    .data(color.range())
+    .join("rect")
+    .attr("height", height_legend)
+    .attr("x", (d, i) => x_legend(i))
+    .attr("width", (d, i) => x_legend(i + 1) - x_legend(i))
+    .attr("fill", d => d);
+
+  svg_legend.append("text")
+    .attr("x", width_legend+2)
+    .attr("y", height_legend+12)
+    .attr("fill", "black")
+    .attr("text-anchor", "start")
+    //.attr("font-weight", "bold")
+    .raise();
+
+  svg_legend.call(d3.axisBottom(x_legend)
+        .tickSize(height_legend + 5)
+        .tickFormat(i => color.domain()[i])
+        .tickValues(d3.range(0, length_legend + 1))
+        .ticks(10))
+        .select(".domain")
+        .remove();
+
 }
 

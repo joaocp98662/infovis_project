@@ -31,15 +31,32 @@ const roles_count = [
     { label: 'Statistician', count: 1 },
 ];
 
-// const roles_indexes = [
-//     { role: 'Business Analyst', index: 1 },
-//     { role: 'Data Analyst', index: 2 },
-//     { role: 'Data Engineer', index: 3 },
-//     { role: 'Data Scientist', index: 4 },
-//     { role: 'DBA/Database Engineer', index: 5 },
-//     { role: 'Machine Learning Engineer', index: 6 },
-//     { role: 'Product/Project Manager', index: 7 },
-//     { role: 'Research Scientist', index: 8 },
-//     { role: 'Software Engineer', index: 9 },
-//     { role: 'Statistician', index: 10 },
-// ]
+var filtersArray = [
+    {"filter": "role", "value": []},
+    {"filter": "company_size", "value": []},
+    {"filter": "education", "value": []}
+    // {"filter": "company_size", "value": ["0-49"]}
+    // {"filter": "company_size", "value": ["0-49", "50-249"]}
+    // {"filter": "company_size", "value": ["0-49", "50-249", "250-999"]}
+];
+
+const education_levels = ["High school", "Some college study with no degree", "Professional degree", "Bachelor's degree", "Master's degree", "Doctoral degree"];
+const education_levels_map = {"No formal education past high school": "High school", "Some college/university study without earning a bachelor’s degree": "Some college study with no degree", "Professional Degree": "Professional Degree", "Bachelor's degree": "Bachelor's degree", "Master's degree": "Master's degree", "Doctoral degree": "Doctoral degree"};
+const education_levels_undefined = {17: "Bachelor's degree", 15: "Master's degree", 19: "Professional degree"};
+
+const incomes = ["0-9,999", "10,000-49,999", "50,000-99,999", "100,000-199,999", "200,000-500,000", "> 500,000"];
+
+var map_filters_attributes = {"role": "q5", "company_size": "q20", "education": "q4"};
+
+// var count_roles = {"Business Analyst": 0, "Data Analyst": 0, "Data Engineer": 0, "Data Scientist": 0, "DBA/Database Engineer": 0, "Machine Learning Engineer": 0, "Product/Project Manager": 0, "Research Scientist": 0, "Software Engineer": 0, "Statistician": 0};
+
+var count_roles = {"Data Engineer": 0, "Software Engineer": 0, "Data Scientist": 0, "Research Scientist": 0, "Statistician": 0, "Product/Project Manager": 0, "Data Analyst": 0, "Machine Learning Engineer": 0, "Business Analyst": 0, "DBA/Database Engineer": 0, "total": 0};
+var percentage_roles = {"Data Engineer": 0, "Software Engineer": 0, "Data Scientist": 0, "Research Scientist": 0, "Statistician": 0, "Product/Project Manager": 0, "Data Analyst": 0, "Machine Learning Engineer": 0, "Business Analyst": 0, "DBA/Database Engineer": 0, "total": 0};
+
+const map_roles_acronimous = {"Business Analyst": "BA", "Data Analyst": "DA", "Data Engineer": "DE", "Data Scientist": "DS", "DBA/Database Engineer": "DBA", "Machine Learning Engineer": "MLE", "Product/Project Manager": "PM", "Research Scientist": "RS", "Software Engineer": "SW", "Statistician": "S"}
+
+var original_data_size = 0;
+
+var original_data = [];
+
+var role_filter_updated = false;

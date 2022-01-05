@@ -3,127 +3,53 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Data Professionals</title>
+    <title>Data Professionals - What are they made of?</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/shards-dashboards.1.1.0.min.css">
-    <link rel="shortcut icon" href="#">
-    <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
+<!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="styles/structure.min.css">
+    <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="styles/layout.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="icon" href="images/favicon.ico" />
     <!-- Import libraries. -->
     <script language="JavaScript" type="text/javascript" src="libs/d3.min.js"></script>
     <!-- JS -->
-    <!-- <script language="JavaScript" type="text/javascript" src="scripts/behavior.js"></script> -->
     <script language="JavaScript" type="text/javascript" src="scripts/env.js"></script>
     <script language="JavaScript" type="text/javascript" src="scripts/helpers.js"></script>
     <script language="JavaScript" type="text/javascript" src="scripts/main.js"></script>
     <script language="JavaScript" type="text/javascript" src="scripts/idioms.js"></script>
-    <script language="JavaScript" type="text/javascript" src="scripts/comp.js"></script>   
+    <script language="JavaScript" type="text/javascript" src="scripts/comp.js"></script>
+    <script language="JavaScript" type="text/javascript" src="scripts/d3.parsets.js"></script>
+    <script language="JavaScript" type="text/javascript" src="scripts/individualPlot.js"></script>
+    <script language="JavaScript" type="text/javascript" src="scripts/parallelSet.js"></script>
   </head>
-  <body class="h-100" onload="init()">
+  <body onload="init()">
     <div class="container-fluid" style="overflow-x: hidden !important;">
       <div class="row">
         <main class="main-content col-lg-12 col-md-9 col-sm-12 p-0">
-          <div class="main-navbar sticky-top bg-white">
-            <!-- Main Navbar -->
-            <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-              <ul class="navbar-nav border-left flex-row ">
-                <li class="nav-item">
-                  <div class="nav-link text-nowrap px-3" style="padding-top: 20px;">
-                    <img class="user-avatar rounded-circle mr-2" src="images/avatars/vi.png" alt="Visualization Information">
-                    <span class="d-none d-md-inline-block">Visualization Information 2021/2022</span>
-                  </div>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <!-- / .main-navbar -->
+
           <div class="main-content-container container-fluid px-4">
 
-            <!-- Page Header -->
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                <span class="text-uppercase page-subtitle">Dashboard</span>
-                <h3 class="page-title">Data Professionals</h3>
+                <span class="text-uppercase page-subtitle" style="display: block;">Dashboard</span>
+                <h3 class="page-title" style="display: inline-block;">Data Professionals:</h3>
+                <h5 style="display: inline-block;">What are They made of?</h5>
               </div>
             </div>
-            <!-- End Page Header -->
-
-            <!-- Small Stats Blocks -->
-            <div class="row">
-<!--               <div class="col-lg col-md-6 col-sm-6 mb-4">
-                <div class="stats-small stats-small--1 card card-small">
-                  <div class="card-body p-0 d-flex">
-                    <div class="d-flex flex-column m-auto">
-                      <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Questions</span>
-                        <h6 class="stats-small__value count my-3">6</h6>
-                      </div>
-                    </div>
-                    <canvas height="120" class="blog-overview-stats-small-1"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg col-md-6 col-sm-6 mb-4">
-                <div class="stats-small stats-small--1 card card-small">
-                  <div class="card-body p-0 d-flex">
-                    <div class="d-flex flex-column m-auto">
-                      <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Responses</span>
-                        <h6 class="stats-small__value count my-3">9000</h6>
-                      </div>
-                    </div>
-                    <canvas height="120" class="blog-overview-stats-small-2"></canvas>
-                  </div>
-                </div>
-              </div> -->
-              <div class="col-lg col-md-4 col-sm-6 mb-4">
-                <div class="stats-small stats-small--1 card card-small">
-                  <div class="card-body p-0 d-flex">
-                    <div class="d-flex flex-column m-auto">
-                      <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Countries</span>
-                        <h6 class="stats-small__value count my-3">23</h6>
-                      </div>
-                    </div>
-                    <canvas height="120" class="blog-overview-stats-small-3"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg col-md-4 col-sm-6 mb-4">
-                <div class="stats-small stats-small--1 card card-small">
-                  <div class="card-body p-0 d-flex">
-                    <div class="d-flex flex-column m-auto">
-                      <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Avg Age</span>
-                        <h6 class="stats-small__value count my-3">32</h6>
-                      </div>
-                    </div>
-                    <canvas height="120" class="blog-overview-stats-small-4"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg col-md-4 col-sm-12 mb-4">
-                <div class="stats-small stats-small--1 card card-small">
-                  <div class="card-body p-0 d-flex">
-                    <div class="d-flex flex-column m-auto">
-                      <div class="stats-small__data text-center">
-                        <!-- <span class="stats-small__label text-uppercase">Roles</span> -->
-                        <!-- <h6 class="stats-small__value count my-3">10</h6> -->
-                        <div id="donutChart"></div>
-                      </div>
-                    </div>
-                    <canvas height="120" class="blog-overview-stats-small-5"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Small Stats Blocks -->
 
             <div class="row">
-              <div class="col-lg-8 col-md-6 col-sm-12 mb-4">
+              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0" style="text-align: center;">Roles and Programming Languages</h6>
+                  </div>
+                  <div class="card-body d-flex py-0">
+                    <div class="parallelSet"></div>
+                  </div>
+                </div>
+              </div>              
+              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
                 <div class="card card-small">
                   <div class="card-header border-bottom">
                     <h6 class="m-0" style="text-align: center;">Activities performed by Data Professionals</h6>
@@ -131,10 +57,22 @@
                   <div class="card-body d-flex py-0">
                     <div class="radarChart"></div>
                   </div>
-                  <div class="card-footer"></div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0" style="text-align: center;">Education Level and yearly Compensation</h6>
+                  </div>
+                  <div class="card-body d-flex py-0">
+                    <div class="individualValuePlot"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
                 <div class="card card-small">
                   <div class="card-header border-bottom">
                     <h6 class="m-0" style="text-align: center;">Distribution of Data Professionals by Roles and Company Size</h6>
@@ -142,11 +80,9 @@
                   <div class="card-body d-flex py-0">
                     <div id="heatmap"></div>
                   </div>
-                  <div class="card-footer"></div>
                 </div>
               </div>
-              <!-- End Users By Device Stats -->
-            </div>        
+            </div>
 
           </div>
         </main>
@@ -154,41 +90,30 @@
     </div>
 
     <style>
-    .donutToolTip {
-        /*width: 100px !important;*/
-        max-width: 100% !important;
-        padding-left: 8px;
-        padding-right: 8px;
-        background-color: white;
-        color: #fff;
-        text-align: center;
-        border-radius: 10px;
-        font-size: 10px;
-        box-shadow: 4px 4px 10px rbga(0, 0, 0, 0.4) pointer-events: none;
-        color: #000;
-        border: 1px solid #777777;
 
-        /* Position the tooltip */
-        position: absolute;
-        z-index: 1;
-        overflow-y: scroll;
-    }
-
-    </style>    
-
-    <!--
-    <style type="text/css">
-      .axis path {
-        fill: none;
-        stroke: #000000;
-        stroke-width: 1px;
+/*      .pt-4, .py-4 {
+        padding-top: 0.1rem!important;
+        padding-bottom: 0.5rem!important;
       }
-      g path {
-        fill: none;
-        stroke: #000000;
-        stroke-width: 1px;
+
+      .mb-4, .my-4 {
+        margin-bottom: 0rem!important;
+      }*/
+
+      .pt-4, .py-4 {
+        padding-top: 0rem!important;
+        padding-bottom: 0.2rem!important;
+      }
+
+      .mb-4, .my-4 {
+        margin-bottom: 0rem!important;
       }      
+
+      body {
+        overflow: hidden;
+      }
+
     </style>
-    -->
+
   </body>
 </html>
